@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Etiquetas obligatorias -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <!-- Etiquetas opcionales -->
+    <meta name="description" content="Ejercicio tablas 2">
+    <meta name="keywords" content="HTML">
+    <meta name="author" content="Sandra Requena">
+    <style>
+        table {border-collapse: collapse;}
+        td, th {border: ridge rgba(255, 255, 0, 0.25);}
+        body {text-align: center; color: brown;}
+        th {background-color: rgba(0, 128, 0, 0.75);}
+        .orange {background-color:rgba(255, 166, 0, 0.75);}
+        .yellow {background-color: rgba(255, 255, 0, 0.75);}
+        td {background-color: rgba(255, 255, 0, 0.25);}
+    </style>
+    <title>Ejercicio tablas 2</title>
+</head>
+<body>
+    <!-- El comando para hacer esta tabla automáticamente es
+    table>tr>th[colspan=4]+(tr>(td[rowspan=2]+td[colspan=2]+td[rowspan=2])+(tr>td*2)+(tr>td*4)+(tr>td+td[colspan=2]+td)*2) -->
+    <table>
+        <tr>
+            <th colspan="4">DIFERENCIAS ENTRE EL PERRO Y EL HOMBRE</th>
+        </tr>
+        <tr>
+            <td rowspan="2" class="orange">DIFERENCIAS</td>
+            <td colspan="2" class="orange">PERRO</td>
+            <td rowspan="2" class="orange">HOMBRE</td>
+        </tr>
+        <tr>
+            <td class="yellow">PEQUEÑO</td>
+            <td class="yellow">GRANDE</td>
+        </tr>
+        <tr>
+            <td>Duración crecimiento</td>
+            <td>10 meses</td>
+            <td>18 a 24 meses</td>
+            <td>16 años</td>
+        </tr>
+        <tr>
+            <td>Tiempo de gestación</td>
+            <td colspan="2">58 a 63 días</td>
+            <td>9 meses</td>
+        </tr>
+        <tr>
+            <td>Duración de vida del pelo/cabello</td>
+            <td colspan="2">1 año</td>
+            <td>2 a 7 años</td>
+        </tr>
+    </table>
+</body>
+</html>

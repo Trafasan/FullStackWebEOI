@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Etiquetas obligatorias -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <!-- Etiquetas opcionales -->
+    <meta name="description" content="Formulario de prueba">
+    <meta name="keywords" content="HTML, CSS, JavaScript, TypeScript, Angular">
+    <meta name="author" content="Sandra Requena">
+    <title>Formulario de prueba</title>
+</head>
+<body>
+    <form>
+        <p>
+            <label for="nombre">
+                Nombre: <input type="text" name="nombre" id="nombre" required>
+            </label>
+        </p>
+        <p>
+            <label for="apellidos">
+                Apellidos: <input type="text" name="apellidos" id="apellidos" placeholder="Apellido por defecto">
+            </label>
+        </p>
+        <p>
+            <label for="password">
+                Contraseña: <input type="password" name="password" id="password" size="12" minlength="6" maxlength="12">
+            </label>
+        </p>
+        <p>
+            <label for="edad">
+                Edad: <input type="number" name="edad" id="edad" min="0" max="120" value="25">
+            </label>
+        </p>
+        <p>
+            <label for="fecha">
+                Fecha: <input type="date" name="fecha" id="fecha" max="2023-01-23">
+            </label>
+        </p>
+        <p>
+            <label for="fechaHora">
+                Fecha y hora: <input type="datetime-local" name="fechaHora" id="fechaHora">
+            </label>
+        </p>
+        <p>Escoge un precio máximo:</p>
+        <input type="range" name="barra" min="50000" max="500000" step="1000" oninput="numero.value = this.value">
+        <input type="number" name="numero" min="50000" max="500000" step="1000" oninput="barra.value = this.value">
+        <p>
+            <label>Sexo: </label>
+            <label>
+                Hombre<input type="radio" name="sexo" value="H">
+            </label>
+            <label>
+                Mujer<input type="radio" name="sexo" value="M" checked>
+            </label>
+        </p>
+        <p>
+            <label>Deportes: </label>
+            <label>
+                Fútbol<input type="checkbox" name="futbol" value="FUT">
+            </label>
+            <label>
+                Baloncesto<input type="checkbox" name="baloncesto" value="BAL">
+            </label>
+            <label>
+                Judo<input type="checkbox" name="judo" value="JUD">
+            </label>
+            <label>
+                Tenis<input type="checkbox" name="tenis" value="TEN">
+            </label>
+        </p>
+        <p>
+            <label>
+                <input type="file" name="file" accept="image/*">
+            </label>
+        </p>
+        <!-- Manera 1 de poner los botones -->
+        <p>
+            <input type="submit" name="enviar" value="Enviar">
+            <input type="reset" name="eliminar" value="Borrar">
+            <input type="button" name="boton1" value="Prográmame">
+        </p>
+        <!-- Manera 2 de poner los botones -->
+        <p>
+            <button type="submit" name="enviar">Enviar</button>
+            <button type="reset" name="eliminar">Borrar</button>
+            <button type="button" name="boton1" >Prográmame</button>
+            <button type="button" name="boton2" >
+                <!-- Esto no se podría hacer con la etiqueta input -->
+                <img src="flecha.png" style="height: 10px;">
+            </button>
+        </p>
+    </form>
+</body>
+</html>
