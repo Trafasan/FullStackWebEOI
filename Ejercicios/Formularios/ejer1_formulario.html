@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Etiquetas obligatorias -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <!-- Etiquetas opcionales -->
+    <meta name="description" content="Ejercicio formulario 1">
+    <meta name="keywords" content="HTML, CSS, JavaScript, TypeScript, Angular">
+    <meta name="author" content="Sandra Requena">
+    <title>Ejercicio formulario 1</title>
+</head>
+<body style="background-color: #b0d5b0">
+    <h1 style="color: #7376b8; text-align: right;">Hoteles El Paraiso</h1>
+    <h2>Sistema de reservas de habitación:</h2>
+    <form>
+        <p>
+            <label for="nombre">
+                Introduzca su nombre: <input type="text" name="nombre" id="nombre" required>
+            </label>
+        </p>
+        <p>
+            <label for="password">
+                Introduzca una clave para su identificación (4 letras): <input type="password" name="password" id="password" size="4" minlength="4" maxlength="4" required>
+            </label>
+        </p>
+        <p>
+            <label>Tipo de habitación</label> <br> <br>
+            <label>
+                <input type="radio" name="habitacion" value="ind">Individual
+            </label>
+            <label>
+                <input type="radio" name="habitacion" value="dob" checked>Doble
+            </label>
+        </p>
+        <p>
+            <label>Opciones extra: </label> <br> <br>
+            <label>
+                <input type="checkbox" name="desayuno" value="des" checked>Desayuno en cama
+            </label>
+            <label>
+                <input type="checkbox" name="jacuzzi" value="jac">Jacuzzi
+            </label>
+            <label>
+                <input type="checkbox" name="climatizador" value="cli">Climatizador
+            </label>
+        </p>
+        <p style="text-align: right;">
+            <button type="submit" name="enviar" style="background-color:#79b979; border-color: white; border-width: 5px;">
+                <!-- Esto no se podría hacer con la etiqueta input -->
+                <img src="flecha.png" style="height: 50px;" alt="flecha.png">
+            </button>
+        </p>
+    </form>
+</body>
+</html>
