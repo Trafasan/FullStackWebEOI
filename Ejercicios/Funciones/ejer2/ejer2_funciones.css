@@ -1,0 +1,15 @@
+td, div{
+    border: 1px solid black;
+}
+td {
+    padding: 2px 15px 2px 2px;
+}
+table{
+    border-collapse: collapse;
+}
+ul{
+    list-style: circle;
+}
+select{
+    border-radius: 5px;
+}
