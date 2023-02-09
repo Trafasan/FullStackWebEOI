@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Etiquetas obligatorias -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <!-- Etiquetas opcionales -->
+    <meta name="description" content="Ejercicio formulario 2">
+    <meta name="keywords" content="HTML, CSS, JavaScript, TypeScript, Angular">
+    <meta name="author" content="Sandra Requena">
+    <title>Ejercicio formulario 2</title>
+</head>
+<body>
+    <h3>Información sobre el producto</h3>
+    <form id="datos" method="get">
+        <fieldset>
+            <legend>Datos básicos</legend>
+            <p>
+                <label for="nombre">Nombre:<br>
+                    <input type="text" name="nombre" id="nombre" min="5" max="50" required>
+                </label>
+            </p>
+            <p>
+                <label>Descripción:<br>
+                    <textarea name="opinion" id="" cols="50" rows="5" placeholder="Escribe aquí..."></textarea>
+                </label>
+            </p>
+            <p>
+                <label>Foto:
+                    <input type="text" name="nombre" id="nombre" min="5" max="50">
+                    <input type="file" name="file" accept="image/*">
+                </label>
+            </p>
+            <p>
+                <label>
+                    <input type="checkbox" name="contador" value="cont"> Añadir contador de visitas
+                </label>
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>Datos económicos</legend>
+            <p>
+                <label for="precio">
+                    Precio: <input type="number" name="precio" id="precio">€
+                </label>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label>Impuestos: 
+                    <select name="impuestos" id="impuestos">
+                        <option value="4">4%</option>
+                        <option value="7">7%</option>
+                        <option value="16">16%</option>
+                        <option value="25">25%</option>
+                    </select>
+                </label>
+            </p>
+            <p>
+                <label>Promoción</label> <br>
+                <label>
+                    <input type="radio" name="prom" value="nin" checked>Ninguno<br>
+                </label>
+                <label>
+                    <input type="radio" name="prom" value="tra">Transporte gratuito<br>
+                </label>
+                <label>
+                    <input type="radio" name="prom" value="des">Descuento 5%<br>
+                </label>
+            </p>
+        </fieldset>
+    </form>
+</body>
+</html>

@@ -12,26 +12,29 @@
 </head>
 <body>
     <form>
-        <p>
-            <label for="nombre">
-                Nombre: <input type="text" name="nombre" id="nombre" required>
-            </label>
-        </p>
-        <p>
-            <label for="apellidos">
-                Apellidos: <input type="text" name="apellidos" id="apellidos" placeholder="Apellido por defecto">
-            </label>
-        </p>
-        <p>
-            <label for="password">
-                Contraseña: <input type="password" name="password" id="password" size="12" minlength="6" maxlength="12">
-            </label>
-        </p>
-        <p>
-            <label for="edad">
-                Edad: <input type="number" name="edad" id="edad" min="0" max="120" value="25">
-            </label>
-        </p>
+        <fieldset>
+            <legend>Datos personales:</legend>
+            <p>
+                <label for="nombre">
+                    Nombre: <input type="text" name="nombre" id="nombre" required>
+                </label>
+            </p>
+            <p>
+                <label for="apellidos">
+                    Apellidos: <input type="text" name="apellidos" id="apellidos" placeholder="Apellido por defecto">
+                </label>
+            </p>
+            <p>
+                <label for="password">
+                    Contraseña: <input type="password" name="password" id="password" size="12" minlength="6" maxlength="12">
+                </label>
+            </p>
+            <p>
+                <label for="edad">
+                    Edad: <input type="number" name="edad" id="edad" min="0" max="120" value="25">
+                </label>
+            </p>
+        </fieldset>
         <p>
             <label for="fecha">
                 Fecha: <input type="date" name="fecha" id="fecha" max="2023-01-23">
@@ -72,6 +75,26 @@
         <p>
             <label>
                 <input type="file" name="file" accept="image/*">
+            </label>
+        </p>
+        <p>
+            <label>Opinión:<br>
+                <textarea name="opinion" id="" cols="20" rows="5" placeholder="Escribe aquí..."></textarea>
+            </label>
+        </p>
+        <p>
+            <label>País: 
+                <select name="pais" id="pais">
+                    <option value="" hidden>--Elige un país--</option>
+                    <optgroup label="Europa">
+                        <option value="spa">España</option>
+                        <option value="ita">Italia</option>
+                    </outgroup>
+                    <optgroup label="Sudamérica">
+                        <option value="arg">Argentina</option>
+                        <option value="ita">Brasil</option>
+                    </outgroup>
+                </select>
             </label>
         </p>
         <!-- Manera 1 de poner los botones -->
