@@ -9,25 +9,25 @@
     <meta name="keywords" content="HTML, CSS, JavaScript, TypeScript, Angular">
     <meta name="author" content="Sandra Requena">
     <title>Ejercicio formulario 2</title>
+    <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
     <h3>Información sobre el producto</h3>
-    <form id="datos" method="get">
+    <form id="datos" action="ejer2_recibirDatos.html" method="get">
         <fieldset>
             <legend>Datos básicos</legend>
             <p>
                 <label for="nombre">Nombre:<br>
-                    <input type="text" name="nombre" id="nombre" min="5" max="50" required>
+                    <input type="text" name="nombre" id="nombre" minlength="5" maxlength="50" required>
                 </label>
             </p>
             <p>
                 <label>Descripción:<br>
-                    <textarea name="opinion" id="" cols="50" rows="5" placeholder="Escribe aquí..."></textarea>
+                    <textarea name="opinion" cols="50" rows="5" placeholder="Escribe aquí..."></textarea>
                 </label>
             </p>
             <p>
                 <label>Foto:
-                    <input type="text" name="nombre" id="nombre" min="5" max="50">
                     <input type="file" name="file" accept="image/*">
                 </label>
             </p>
@@ -41,7 +41,7 @@
             <legend>Datos económicos</legend>
             <p>
                 <label for="precio">
-                    Precio: <input type="number" name="precio" id="precio">€
+                    Precio: <input style="width: 50px;" type="number" name="precio" id="precio" required>€
                 </label>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <label>Impuestos: 
@@ -66,6 +66,8 @@
                 </label>
             </p>
         </fieldset>
+        <input type="submit" value="Enviar">
     </form>
+    <a href="https://github.com/Trafasan">Prueba CSS</a>
 </body>
 </html>

@@ -1,0 +1,15 @@
+h3, label {
+    color: rgb(39, 16, 73);
+}
+
+a:link {
+    color: red;
+}
+
+a:visited {
+    color: blue;
+}
+
+a:hover {
+    text-decoration: none;
+}
