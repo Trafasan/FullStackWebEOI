@@ -6,31 +6,38 @@
 •El programa mostrará la tabla de multiplicar del número más pequeño, llegando hasta el número más grande
 •Ojo, tendrás que tener en cuenta que el usuario puede ponerte el segundo número más pequeño que el primero. */
 
-function impresionMult(nMin, nMax, tipo) {
+function elegirImpresion(nMin, nMax, tipo) {
     switch (tipo){
         case "LISTA":
-            document.write("<ul>");
-            for (let i=1; i<=nMax; i++)  document.write("<li>"+nMin+"x"+i+"="+(nMin*i)+"</li>");
-            document.write("</ul>");
-        break;
+            impresionEstructuraBasica(nMin, nMax, "ul", "li");
+            break;
         case "PARRAFO":
-            document.write("<div>");
-            for (let i=1; i<=nMax; i++)  document.write("<p>"+nMin+"x"+i+"="+(nMin*i)+"</p>");
-            document.write("</div>");
-        break;
+            impresionEstructuraBasica(nMin, nMax, "div", "p");
+            break;
         case "TABLA":
-            document.write("<table>");
-            for (let i=1; i<=nMax; i++)  document.write("<tr><td>"+nMin+"x"+i+"</td><td>=</td><td>"+(nMin*i)+"</td></tr>");
-            document.write("</table>");
-        break;
+            impresionTabla(nMin, nMax);
+            break;
         case "DESPLEGABLE":
-            document.write("<p><label>Tabla de multiplicar del "+nMin+": <select name=\"multiplicaciones\">");
-            document.write("<option value=\"\" hidden>&nbsp</option>");
-            for (let i=1; i<=nMax; i++)  document.write("<option value=\""+i+"\">"+nMin+"x"+i+"="+(nMin*i)+"</option>");
-            document.write("</select></label></p>");
+            impresionDesplegable(nMin, nMax);
             break;
         default: alert ("Hasta pronto :)");
     }
+}
+function impresionEstructuraBasica(nMin, nMax, item1, item2) {
+    document.write("<"+item1+">");
+    for (let i=1; i<=nMax; i++)  document.write("<"+item2+">"+nMin+"x"+i+"="+(nMin*i)+"</"+item2+">");
+    document.write("</"+item1+">");
+}
+function impresionTabla(nMin, nMax) {
+    document.write("<table>");
+    for (let i=1; i<=nMax; i++)  document.write("<tr><td>"+nMin+"x"+i+"</td><td>=</td><td>"+(nMin*i)+"</td></tr>");
+    document.write("</table>");
+}
+function impresionDesplegable(nMin, nMax) {
+    document.write("<p><label>Tabla de multiplicar del "+nMin+": <select name=\"multiplicaciones\">");
+    document.write("<option value=\"\" hidden>&nbsp</option>");
+    for (let i=1; i<=nMax; i++)  document.write("<option value=\""+i+"\">"+nMin+"x"+i+"="+(nMin*i)+"</option>");
+    document.write("</select></label></p>");
 }
 
 function pedirValidarTipo(texto) {
@@ -58,7 +65,8 @@ let nMin = Math.min(n1, n2);
 let nMax = Math.max(n1, n2);
 let tipo;
 
+document.head.innerHTML += "<link rel=\"stylesheet\" href=\"ejer2_funciones.css\"></link>"; // Esto añade al head los estilos de la página
 do{
     tipo = pedirValidarTipo("Introduzca el modo de visualización (LISTA, PARRAFO, TABLA, DESPLEGABLE, SALIR): ");
-    impresionMult(nMin, nMax, tipo);
+    elegirImpresion(nMin, nMax, tipo);
 } while (tipo != "SALIR")
