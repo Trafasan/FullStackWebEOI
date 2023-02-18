@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Etiquetas obligatorias -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <!-- Etiquetas opcionales -->
+    <meta name="description" content="Ejercicio funciones 2">
+    <meta name="keywords" content="HTML, JavaScript">
+    <meta name="author" content="Sandra Requena">
+    <title>Ejercicio funciones 2</title>
+</head>
+<body>
+    <p>
+        <label id="numero1">
+            Eliga un número: <input type="number" name="n1" id="n1" min="1" max="10" value="1">
+        </label>
+    </p>
+    <p>
+        <label id="numero2">
+            Eliga otro número: <input type="number" name="n2" id="n2" min="1" max="10" value="1">
+        </label>
+    </p>
+    <p>
+        <button type="button" id="lista" onclick="impresionLista()">Lista</button>
+        <button type="button" id="parrafo" onclick="impresionParrafo()">Párrafo</button>
+        <button type="button" id="tabla" onclick="impresionTabla()">Tabla</button>
+        <button type="button" id="desplegable" onclick="impresionDesplegable()">Desplegable</button>
+    </p>
+    <div id="contenido"></div>
+    <script src="ejer2_funciones.js"></script>
+</body>
+</html>
