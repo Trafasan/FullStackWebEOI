@@ -7,14 +7,20 @@
 3) Crear tanto RADIOBUTTON como elemento tambien
 4) Si cambias el valor del radio, se cambie el desplegable y viceversa */
 
-let nElementos = prompt("Introduzca el número de elementos:");
+function equipararOpcionesSelect() {
+    document.querySelector('select').value = this.value;
+}
+
+function equipararOpcionesRadio() {
+    document.getElementsByName('opciones')[this.value-1].checked = true;
+}
 
 function insertarDesplegable(nElementos) {
     let parrafo = document.createElement("p");
     let desplegable = document.createElement("label");
     let textoDesplegable = document.createTextNode("Desplegable creado por DOM: ");
     let selecciones = document.createElement("select");
-    selecciones.setAttribute("name", "elementos");
+    selecciones.setAttribute("name", "desplegable");
     let opcionVacia = document.createElement("option");
     let textoOpcionVacia = document.createTextNode("-Elementos-");
     opcionVacia.appendChild(textoOpcionVacia);
@@ -28,6 +34,7 @@ function insertarDesplegable(nElementos) {
         opcion.setAttribute("value", i);
         selecciones.appendChild(opcion);
     }
+    selecciones.addEventListener("input", equipararOpcionesRadio);
     desplegable.appendChild(textoDesplegable);
     desplegable.appendChild(selecciones);
     parrafo.appendChild(desplegable);
@@ -46,8 +53,9 @@ function insertarRadio(nElementos) {
         let textoOpcion = document.createTextNode("Elemento "+i);
         let input = document.createElement("input");
         input.setAttribute("type", "radio")
-        input.setAttribute("name", "elementos")
+        input.setAttribute("name", "opciones")
         input.setAttribute("value", i);
+        input.addEventListener("input", equipararOpcionesSelect);
         seleccion.appendChild(input);
         seleccion.appendChild(textoOpcion);
         radio.appendChild(seleccion);
@@ -55,7 +63,9 @@ function insertarRadio(nElementos) {
     }
     document.body.appendChild(contenido);
 }
+
 window.onload = function() {
+    let nElementos = prompt("Introduzca el número de elementos:");
     insertarDesplegable(nElementos);
     insertarRadio(nElementos);
 }

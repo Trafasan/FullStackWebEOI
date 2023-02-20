@@ -13,7 +13,7 @@
 <body>
     <p>
         <label>Desplegable creado por DOM:
-            <select name="desplegables">
+            <select name="desplegable" oninput="document.getElementsByName('opciones')[this.value-1].checked = true">
                 <option value="" hidden>-Elementos-</option>
                 <option value="1">Elemento 1</option>
                 <option value="2">Elemento 2</option>
@@ -27,27 +27,27 @@
         <label>Opciones creado por DOM:</label>
         <div>
             <label>
-                Elemento 1 <input type="radio" name="opciones" value="1">
+                Elemento 1 <input type="radio" name="opciones" value="1" oninput="document.querySelector('select').value = this.value">
             </label>
         </div>
         <div>
             <label>
-                Elemento 2 <input type="radio" name="opciones" value="2">
+                Elemento 2 <input type="radio" name="opciones" value="2" oninput="document.querySelector('select').value = this.value">
             </label>
         </div>
         <div>
             <label>
-                Elemento 3 <input type="radio" name="opciones" value="3">
+                Elemento 3 <input type="radio" name="opciones" value="3" oninput="document.querySelector('select').value = this.value">
             </label>
         </div>
         <div>
             <label>
-                Elemento 4 <input type="radio" name="opciones" value="4">
+                Elemento 4 <input type="radio" name="opciones" value="4" oninput="document.querySelector('select').value = this.value">
             </label>
         </div>
         <div>
             <label>
-                Elemento 5 <input type="radio" name="opciones" value="5">
+                Elemento 5 <input type="radio" name="opciones" value="5" oninput="document.querySelector('select').value = this.value">
             </label>
         </div>
     </div>
