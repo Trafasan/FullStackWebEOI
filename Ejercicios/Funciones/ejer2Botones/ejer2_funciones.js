@@ -9,45 +9,39 @@
 document.head.innerHTML += "<link rel=\"stylesheet\" href=\"ejer2_funciones.css\"></link>"; // Esto añade al head los estilos de la página
 let info = document.getElementById("contenido");
 
-function impresionLista() {
+function obtenerNumeros() {
     let n1 = document.getElementById("n1").value;
     let n2 = document.getElementById("n2").value;
-    let nMin = Math.min(n1, n2);
-    let nMax = Math.max(n1, n2);
+    return [Math.min(n1, n2), Math.max(n1, n2)];
+}
+
+lista.onclick = function() {
+    let numeros = obtenerNumeros();
     let introducir = "<ul>";
-    for (let i=1; i<=nMax; i++) introducir+="<li>"+nMin+"x"+i+"="+(nMin*i)+"</li>";
+    for (let i=1; i<=numeros[1]; i++) introducir+="<li>"+numeros[0]+"x"+i+"="+(numeros[0]*i)+"</li>";
     introducir+="</ul>";
     info.innerHTML+=introducir;
 }
 
-function impresionParrafo() {
-    let n1 = document.getElementById("n1").value;
-    let n2 = document.getElementById("n2").value;
-    let nMin = Math.min(n1, n2);
-    let nMax = Math.max(n1, n2);
+parrafo.onclick = function() {
+    let numeros = obtenerNumeros();
     let introducir = "<div>";
-    for (let i=1; i<=nMax; i++) introducir+="<p>"+nMin+"x"+i+"="+(nMin*i)+"</p>";
+    for (let i=1; i<=numeros[1]; i++) introducir+="<p>"+numeros[0]+"x"+i+"="+(numeros[0]*i)+"</p>";
     introducir+="</div>";
     info.innerHTML+=introducir;
 }
-function impresionTabla() {
-    let n1 = document.getElementById("n1").value;
-    let n2 = document.getElementById("n2").value;
-    let nMin = Math.min(n1, n2);
-    let nMax = Math.max(n1, n2);
+tabla.onclick = function() {
+    let numeros = obtenerNumeros();
     let introducir = "<table>";
-    for (let i=1; i<=nMax; i++) introducir+="<tr><td>"+nMin+"x"+i+"</td><td>=</td><td>"+(nMin*i)+"</td></tr>";
+    for (let i=1; i<=numeros[1]; i++) introducir+="<tr><td>"+numeros[0]+"x"+i+"</td><td>=</td><td>"+(numeros[0]*i)+"</td></tr>";
     introducir+="</table>";
     info.innerHTML+=introducir;
 }
-function impresionDesplegable() {
-    let n1 = document.getElementById("n1").value;
-    let n2 = document.getElementById("n2").value;
-    let nMin = Math.min(n1, n2);
-    let nMax = Math.max(n1, n2);
-    let introducir = "<p><label>Tabla de multiplicar del "+nMin+": <select name=\"multiplicaciones\">";
+desplegable.onclick = function() {
+    let numeros = obtenerNumeros();
+    let introducir = "<p><label>Tabla de multiplicar del "+numeros[0]+": <select name=\"multiplicaciones\">";
     introducir+="<option value=\"\" hidden>&nbsp</option>";
-    for (let i=1; i<=nMax; i++) introducir+="<option value=\""+i+"\">"+nMin+"x"+i+"="+(nMin*i)+"</option>";
+    for (let i=1; i<=numeros[1]; i++) introducir+="<option value=\""+i+"\">"+numeros[0]+"x"+i+"="+(numeros[0]*i)+"</option>";
     introducir+="</select></label></p>";
     info.innerHTML+=introducir;
 }

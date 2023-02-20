@@ -12,15 +12,17 @@ tienen ese valor de clase.
 window.onload = function() {
     // Cambiar el valor del atributo lang de la etiqueta HTML a "en"
     let madre = document.documentElement;
-    madre.lang="en";
-    console.log(madre.lang);
+    madre.setAttribute("lang", "en");
+    console.log(madre.getAttribute("lang"));
     // Imprimir en un console.log el valor del action
-    let formulario = document.getElementById("pepito").getAttributeNode("action");
-    console.log(formulario.nodeValue); // No está correcto
+    let action = document.getElementById("pepito").getAttributeNode("action");
+    console.log(action.nodeValue);
+    // console.log(pepito.getAttribute("action"));
     // Acceder al primer elemento que tenga la clase "rojo" (función DOM)
-    let elementoRojo = document.getElementsByClassName("rojo");
-    console.log(elementoRojo[0].className);
-    console.log("Número de elementos que tienen ese valor de clase: "+elementoRojo.length);
+    let elementosRojo = document.getElementsByClassName("rojo");
+    console.log(elementosRojo[0].className);
+    // console.log(elementosRojo[0].getAttribute("class"));
+    console.log("Número de elementos que tienen ese valor de clase: "+elementosRojo.length);
     // Acceder al primer elemento que tenga la clase "rojo" (querySelector)
     let elementoRojo2 = document.querySelector(".rojo");
     console.log(elementoRojo2.className);
