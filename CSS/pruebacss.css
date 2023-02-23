@@ -1,4 +1,4 @@
-* { /* El asterisco se refiere a todos los elementos*/
+* { /*El asterisco se refiere a todos los elementos*/
     color : rgb(105, 90, 90);
 }
 
@@ -79,7 +79,7 @@ ol {
 }
 
 ol li {
-    font-size: 48px;
+    font-size: 20px;
 }
 
 ul li {
@@ -89,4 +89,20 @@ ul li {
 
 #otroid{
     color: salmon;
+}
+
+#textoprincipal{
+    width: 350px;
+    height: 150px;
+    margin: 10px;
+    padding: 25px;
+    border: 5px solid black;
+}
+
+#listadesordenada{
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+    padding: 25px;
+    border: 15px solid red;
 }

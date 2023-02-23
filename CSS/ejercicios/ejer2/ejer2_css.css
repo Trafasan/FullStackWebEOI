@@ -1,0 +1,20 @@
+.contenedor {
+    border: 5px solid red;
+}
+.contenedor * {
+    border: 5px solid;
+    margin-top: 10px;
+    width: 50%;
+}
+.caja1 {
+    border-color: green;
+    margin-left: 10px;
+}
+.caja2 {
+    border-color: blue;
+    margin-left: 50px;
+}
+.caja3 {
+    border-color: orange;
+    margin-left: 100px;
+}
