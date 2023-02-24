@@ -13,7 +13,7 @@
 <body>
     <p>
         <label>Desplegable creado por DOM:
-            <select name="desplegable" oninput="document.getElementsByName('opciones')[this.value-1].checked = true">
+            <select name="desplegable" onchange="document.getElementsByName('opciones')[this.value-1].checked = true">
                 <option value="" hidden>-Elementos-</option>
                 <option value="1">Elemento 1</option>
                 <option value="2">Elemento 2</option>
@@ -23,33 +23,23 @@
             </select>
         </label>
     </p>
-    <div>
-        <label>Opciones creado por DOM:</label>
-        <div>
-            <label>
-                Elemento 1 <input type="radio" name="opciones" value="1" oninput="document.querySelector('select').value = this.value">
-            </label>
-        </div>
-        <div>
-            <label>
-                Elemento 2 <input type="radio" name="opciones" value="2" oninput="document.querySelector('select').value = this.value">
-            </label>
-        </div>
-        <div>
-            <label>
-                Elemento 3 <input type="radio" name="opciones" value="3" oninput="document.querySelector('select').value = this.value">
-            </label>
-        </div>
-        <div>
-            <label>
-                Elemento 4 <input type="radio" name="opciones" value="4" oninput="document.querySelector('select').value = this.value">
-            </label>
-        </div>
-        <div>
-            <label>
-                Elemento 5 <input type="radio" name="opciones" value="5" oninput="document.querySelector('select').value = this.value">
-            </label>
-        </div>
+    <div style="display: grid;">
+        <label>Opciones creadas por DOM:</label>
+        <label>
+            <input type="radio" name="opciones" value="1" onchange="document.querySelector('select').value = this.value"> Elemento 1
+        </label>
+        <label>
+            <input type="radio" name="opciones" value="2" onchange="document.querySelector('select').value = this.value"> Elemento 2
+        </label>
+        <label>
+            <input type="radio" name="opciones" value="3" onchange="document.querySelector('select').value = this.value"> Elemento 3
+        </label>
+        <label>
+            <input type="radio" name="opciones" value="4" onchange="document.querySelector('select').value = this.value"> Elemento 4
+        </label>
+        <label>
+            <input type="radio" name="opciones" value="5" onchange="document.querySelector('select').value = this.value"> Elemento 5
+        </label>
     </div>
 </body>
 </html>

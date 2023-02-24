@@ -19,7 +19,7 @@ function insertarParrafo() {
     let parrafo = document.createElement("p");
     let texto = document.createTextNode("PÁRRAFO "+(parrafos.length+1));
     parrafo.appendChild(texto);
-    parrafo.addEventListener("click", insertarParrafo);
+    parrafo.onclick = insertarParrafo;
     document.body.appendChild(parrafo);
 }
 

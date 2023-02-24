@@ -18,24 +18,22 @@ function equipararOpcionesRadio() {
 function insertarDesplegable(nElementos) {
     let parrafo = document.createElement("p");
     let desplegable = document.createElement("label");
-    let textoDesplegable = document.createTextNode("Desplegable creado por DOM: ");
     let selecciones = document.createElement("select");
-    selecciones.setAttribute("name", "desplegable");
+    selecciones.name = "desplegable";
     let opcionVacia = document.createElement("option");
-    let textoOpcionVacia = document.createTextNode("-Elementos-");
-    opcionVacia.appendChild(textoOpcionVacia);
-    opcionVacia.setAttribute("value", "");
+    opcionVacia.appendChild(document.createTextNode("-Elementos-"));
+    opcionVacia.value = "";
     opcionVacia.hidden = true;
     selecciones.appendChild(opcionVacia);
+    let opcion;
     for (let i=1; i<=nElementos; i++) {
-        let opcion = document.createElement("option");
-        let textoOpcion = document.createTextNode("Elemento "+i);
-        opcion.appendChild(textoOpcion);
-        opcion.setAttribute("value", i);
+        opcion = document.createElement("option");
+        opcion.appendChild(document.createTextNode("Elemento "+i));
+        opcion.value = i;
         selecciones.appendChild(opcion);
     }
-    selecciones.addEventListener("input", equipararOpcionesRadio);
-    desplegable.appendChild(textoDesplegable);
+    selecciones.onchange = equipararOpcionesRadio;
+    desplegable.appendChild(document.createTextNode("Desplegable creado por DOM: "));
     desplegable.appendChild(selecciones);
     parrafo.appendChild(desplegable);
     document.body.appendChild(parrafo);
@@ -44,28 +42,31 @@ function insertarDesplegable(nElementos) {
 function insertarRadio(nElementos) {
     let contenido = document.createElement("div");
     let enunciado = document.createElement("label");
-    let textoEnunciado = document.createTextNode("Opciones creadas por DOM: ");
-    enunciado.appendChild(textoEnunciado);
+    enunciado.appendChild(document.createTextNode("Opciones creadas por DOM: "));
     contenido.appendChild(enunciado);
+    contenido.style.display = "grid";
+    let seleccion, input;
     for (let i=1; i<=nElementos; i++) {
-        let radio = document.createElement("div");
-        let seleccion = document.createElement("label");
-        let textoOpcion = document.createTextNode("Elemento "+i);
-        let input = document.createElement("input");
-        input.setAttribute("type", "radio")
-        input.setAttribute("name", "opciones")
-        input.setAttribute("value", i);
-        input.addEventListener("input", equipararOpcionesSelect);
+        seleccion = document.createElement("label");
+        input = document.createElement("input");
+        input.type = "radio"
+        input.name = "opciones";
+        input.value = i;
+        input.onchange = equipararOpcionesSelect;
         seleccion.appendChild(input);
-        seleccion.appendChild(textoOpcion);
-        radio.appendChild(seleccion);
-        contenido.appendChild(radio);
+        seleccion.appendChild(document.createTextNode(" Elemento "+i));
+        contenido.appendChild(seleccion);
     }
     document.body.appendChild(contenido);
 }
 
 window.onload = function() {
-    let nElementos = prompt("Introduzca el número de elementos:");
+    let nElementos;
+    do{
+        nElementos = +prompt("Introduzca el número de elementos:");
+        if (isNaN(nElementos)) alert("El dato introducido no es un número");
+        else if (nElementos<1) alert("El número introducido no es válido");
+    } while (isNaN(nElementos)||nElementos<0);
     insertarDesplegable(nElementos);
     insertarRadio(nElementos);
 }
