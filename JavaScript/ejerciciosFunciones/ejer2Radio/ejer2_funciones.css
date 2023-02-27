@@ -1,0 +1,20 @@
+td{
+    border: 1px solid black;
+    padding: 2px 15px 2px 2px;
+    width: fit-content;
+}
+#radiobutton{
+    display: grid;
+}
+table{
+    border-collapse: collapse;
+}
+ul{
+    list-style: circle;
+}
+select{
+    border-radius: 5px;
+}
+#contenido{
+    border: none;
+}

@@ -1,0 +1,11 @@
+body{
+    font-size:20px;
+    background-color:grey;
+}
+
+form,h2,h3{
+    background-color:bisque;
+    width:50%;
+    margin-left:auto;
+    margin-right:auto;		
+}

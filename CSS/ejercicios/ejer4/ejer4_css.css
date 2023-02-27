@@ -30,6 +30,11 @@ article {
     background: aqua;
     flex: 25%; /*Esto hace que todos los artículos tengan el mismo tamaño*/
     box-shadow: 5px 5px gray;
+    /* Partes de box-shadow:
+    * offset-x | offset-y | blur-radius | spread-radius | color
+    * La propiedad blur-radius difumina el color alrededor de nuestro botón (se puede omitir)
+    * La propiedad spread-radius extiende nuestra sombra alrededor de nuestro botón (se puede omitir)
+    */
 }
 footer {
     background: rgba(128, 0, 128, 0.75);
