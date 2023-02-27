@@ -24,9 +24,12 @@ function numMin(f) {
     return Math.min(n1, n2);
 }
 
-function crearLista(nMin, nMax) {
+function crearLista(nMin, nMax, contador) {
     let contenido = document.getElementById("contenido");
     let lista = document.createElement("ul");
+    lista.onclick = function() {
+        cambiarElemento(contador);
+    }
     let elemento;
     for (let i=1; i<=nMax; i++) {
         elemento = document.createElement("li");
@@ -35,9 +38,12 @@ function crearLista(nMin, nMax) {
     }
     contenido.appendChild(lista);
 }
-function crearParrafo(nMin, nMax) {
+function crearParrafo(nMin, nMax, contador) {
     let contenido = document.getElementById("contenido");
     let div = document.createElement("div");
+    div.onclick = function() {
+        cambiarElemento(contador);
+    }
     let parrafo;
     for (let i=1; i<=nMax; i++) {
         parrafo = document.createElement("p");
@@ -46,9 +52,12 @@ function crearParrafo(nMin, nMax) {
     }
     contenido.appendChild(div);
 }
-function crearTabla(nMin, nMax) {
+function crearTabla(nMin, nMax, contador) {
     let contenido = document.getElementById("contenido");
     let tabla = document.createElement("table");
+    tabla.onclick = function() {
+        cambiarElemento(contador);
+    }
     let fila, mult, igual, producto;
     for (let i=1; i<=nMax; i++) {
         fila = document.createElement("tr");
@@ -66,11 +75,14 @@ function crearTabla(nMin, nMax) {
     contenido.appendChild(tabla);
     
 }
-function crearDesplegable(nMin, nMax) {
+function crearDesplegable(nMin, nMax, contador) {
     let contenido = document.getElementById("contenido");
     let parrafo = document.createElement("p");
     let label = document.createElement("label");
     let select = document.createElement("select");
+    select.onchange = function() {
+        cambiarElemento(contador);
+    }
     select.setAttribute("name", "multiplicaciones");
     let opcionVacia = document.createElement("option");
     opcionVacia.hidden = true;
@@ -86,30 +98,28 @@ function crearDesplegable(nMin, nMax) {
     parrafo.appendChild(label);
     contenido.appendChild(parrafo);
 }
-function crearTablaMult() {
-    let f=document.form;
+function crearTablaMult(f, contador) {
     let nMin = numMin(f);
-    let nMax = numMax(f);
+    let nMax = numMax(f)+contador;
     let tipo = f.opciones.value;
     switch (tipo) {
         case "lista":
-            crearLista(nMin, nMax);
+            crearLista(nMin, nMax, contador);
             break;
         case "parrafo":
-            crearParrafo(nMin, nMax);
+            crearParrafo(nMin, nMax, contador);
             break;
         case "tabla":
-            crearTabla(nMin, nMax);
+            crearTabla(nMin, nMax, contador);
             break;
         case "desplegable":
-            crearDesplegable(nMin, nMax);
+            crearDesplegable(nMin, nMax, contador);
             break;
     }
     document.querySelector('button[name="crearTabla"]').setAttribute('hidden', "true");
     document.querySelector('button[name="anyadir"]').removeAttribute('hidden');
     document.querySelectorAll('.numero')[0].setAttribute('hidden', "true");
     document.querySelectorAll('.numero')[1].setAttribute('hidden', "true");
-    return false;
 }
 
 function anyadirLista(nMin, nMax) {
@@ -171,22 +181,23 @@ function cambiarElemento(contador) {
     let nMin = numMin(f);
     let nMax = numMax(f)+contador;
     let contenido = document.getElementById("contenido").firstElementChild.nodeName;
+    console.log(contenido);
     document.getElementById("contenido").removeChild(document.getElementById("contenido").firstElementChild);
     switch (contenido) {
         case "UL": /*La tabla está en formato Lista*/
-            crearParrafo(nMin, nMax);
+            crearParrafo(nMin, nMax, contador);
             document.querySelector('input[value="parrafo"]').checked = true
             break;
         case "DIV": /*La tabla está en formato Párrafo*/
-            crearTabla(nMin, nMax);
+            crearTabla(nMin, nMax, contador);
             document.querySelector('input[value="tabla"]').checked = true
             break;
         case "TABLE": /*La tabla está en formato Tabla*/
-            crearDesplegable(nMin, nMax);
+            crearDesplegable(nMin, nMax, contador);
             document.querySelector('input[value="desplegable"]').checked = true
             break;
         case "P": /*La tabla está en formato Desplegable*/
-            crearLista(nMin, nMax);
+            crearLista(nMin, nMax, contador);
             document.querySelector('input[value="lista"]').checked = true
             break;
     }
@@ -200,16 +211,16 @@ function reemplazarElemento(contador) {
     document.getElementById("contenido").removeChild(document.getElementById("contenido").firstElementChild);
     switch (tipo) {
         case "lista":
-            crearLista(nMin, nMax);
+            crearLista(nMin, nMax, contador);
             break;
         case "parrafo":
-            crearParrafo(nMin, nMax);
+            crearParrafo(nMin, nMax, contador);
             break;
         case "tabla":
-            crearTabla(nMin, nMax);
+            crearTabla(nMin, nMax, contador);
             break;
         case "desplegable":
-            crearDesplegable(nMin, nMax);
+            crearDesplegable(nMin, nMax, contador);
             break;
     }
 }
@@ -232,14 +243,14 @@ window.onload = function() {
     f.n2.oninput=function() {
         validarNumero(this);
     }
-    f.onsubmit = crearTablaMult;
+    f.onsubmit = function() {
+        crearTablaMult(this, contador);
+        return false;
+    }
     document.querySelector('button[name="anyadir"]').setAttribute('hidden', "true");
     document.querySelector('button[name="anyadir"]').onclick = function() {
         contador++;
         anyadirElemento(contador);
-    }
-    document.getElementById("contenido").onclick = function() {
-        cambiarElemento(contador);
     }
     let radios = document.querySelectorAll('input[type="radio"]');
     for (let radiobutton of radios) radiobutton.onchange = function() {
