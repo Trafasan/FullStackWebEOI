@@ -13,53 +13,54 @@
 2) SI CAMBIAS EL RADIO AUTOMATICAMENTE TAMBIEN SE CAMBIE A LA NUEVA ESTRUCTURA
 3) UN BOTON AÑADIR. AÑADA 1 NUEVO A LA ESTRUCTURA.*/
 
-function numMax(f) {
-    let n1 = f.n1.value;
-    let n2 = f.n2.value;
-    return Math.max(n1, n2);
-}
-function numMin(f) {
-    let n1 = f.n1.value;
-    let n2 = f.n2.value;
-    return Math.min(n1, n2);
+let numMax = (f) => Math.max(f.n1.value, f.n2.value);
+let numMin = (f) => Math.min(f.n1.value, f.n2.value);
+
+function contadorCreacion(nMax) {
+    switch (document.getElementById("contenido").firstElementChild.nodeName) {
+        case "UL": return document.querySelectorAll('#contenido li').length-nMax;
+        case "DIV": return document.querySelectorAll('#contenido p').length-nMax;
+        case "TABLE": return document.querySelectorAll('#contenido tr').length-nMax;
+        case "P": return document.querySelectorAll('#contenido option').length-nMax-1;
+    }
 }
 
 function crearLista(nMin, nMax, contador) {
-    let contenido = document.getElementById("contenido");
     let lista = document.createElement("ul");
     lista.onclick = function() {
+        contador = contadorCreacion(nMax);
         cambiarElemento(contador);
     }
     let elemento;
-    for (let i=1; i<=nMax; i++) {
+    for (let i=1; i<=nMax+contador; i++) {
         elemento = document.createElement("li");
         elemento.appendChild(document.createTextNode(nMin+"x"+i+"="+(nMin*i)));
         lista.appendChild(elemento);
     }
-    contenido.appendChild(lista);
+    document.getElementById("contenido").appendChild(lista);
 }
 function crearParrafo(nMin, nMax, contador) {
-    let contenido = document.getElementById("contenido");
     let div = document.createElement("div");
     div.onclick = function() {
+        let contador = contadorCreacion(nMax);
         cambiarElemento(contador);
     }
     let parrafo;
-    for (let i=1; i<=nMax; i++) {
+    for (let i=1; i<=nMax+contador; i++) {
         parrafo = document.createElement("p");
         parrafo.appendChild(document.createTextNode(nMin+"x"+i+"="+(nMin*i)));
         div.appendChild(parrafo);
     }
-    contenido.appendChild(div);
+    document.getElementById("contenido").appendChild(div);
 }
 function crearTabla(nMin, nMax, contador) {
-    let contenido = document.getElementById("contenido");
     let tabla = document.createElement("table");
     tabla.onclick = function() {
+        let contador = contadorCreacion(nMax);
         cambiarElemento(contador);
     }
     let fila, mult, igual, producto;
-    for (let i=1; i<=nMax; i++) {
+    for (let i=1; i<=nMax+contador; i++) {
         fila = document.createElement("tr");
         mult = document.createElement("td");
         mult.appendChild(document.createTextNode(nMin+"x"+i));
@@ -72,15 +73,15 @@ function crearTabla(nMin, nMax, contador) {
         fila.appendChild(producto);
         tabla.appendChild(fila);
     }
-    contenido.appendChild(tabla);
+    document.getElementById("contenido").appendChild(tabla);
     
 }
 function crearDesplegable(nMin, nMax, contador) {
-    let contenido = document.getElementById("contenido");
     let parrafo = document.createElement("p");
     let label = document.createElement("label");
     let select = document.createElement("select");
     select.onchange = function() {
+        let contador = contadorCreacion(nMax);
         cambiarElemento(contador);
     }
     select.setAttribute("name", "multiplicaciones");
@@ -88,7 +89,7 @@ function crearDesplegable(nMin, nMax, contador) {
     opcionVacia.hidden = true;
     select.appendChild(opcionVacia);
     let opcion;
-    for (let i=1; i<=nMax; i++) {
+    for (let i=1; i<=nMax+contador; i++) {
         opcion = document.createElement("option");
         opcion.setAttribute("value", i);
         opcion.appendChild(document.createTextNode(nMin+"x"+i+"="+(nMin*i)));
@@ -96,13 +97,12 @@ function crearDesplegable(nMin, nMax, contador) {
     }
     label.appendChild(select);
     parrafo.appendChild(label);
-    contenido.appendChild(parrafo);
+    document.getElementById("contenido").appendChild(parrafo);
 }
 function crearTablaMult(f, contador) {
     let nMin = numMin(f);
-    let nMax = numMax(f)+contador;
-    let tipo = f.opciones.value;
-    switch (tipo) {
+    let nMax = numMax(f);
+    switch (f.opciones.value) {
         case "lista":
             crearLista(nMin, nMax, contador);
             break;
@@ -123,19 +123,16 @@ function crearTablaMult(f, contador) {
 }
 
 function anyadirLista(nMin, nMax) {
-    let lista = document.querySelector("ul");
     let elemento = document.createElement("li");
     elemento.appendChild(document.createTextNode(nMin+"x"+nMax+"="+(nMin*nMax)));
-    lista.appendChild(elemento);
+    document.querySelector("ul").appendChild(elemento);
 }
 function anyadirParrafo(nMin, nMax) {
-    let div = document.querySelector("#contenido>div");
     let parrafo = document.createElement("p");
     parrafo.appendChild(document.createTextNode(nMin+"x"+nMax+"="+(nMin*nMax)));
-    div.appendChild(parrafo);
+    document.querySelector("#contenido>div").appendChild(parrafo);
 }
 function anyadirTabla(nMin, nMax) {
-    let tabla = document.querySelector("table");
     let fila = document.createElement("tr");
     let mult = document.createElement("td");
     mult.appendChild(document.createTextNode(nMin+"x"+nMax));
@@ -146,21 +143,19 @@ function anyadirTabla(nMin, nMax) {
     let producto = document.createElement("td");
     producto.appendChild(document.createTextNode(nMin*nMax));
     fila.appendChild(producto);
-    tabla.appendChild(fila);    
+    document.querySelector("table").appendChild(fila);    
 }
 function anyadirDesplegable(nMin, nMax) {
-    let select = document.querySelector("select");
     let opcion = document.createElement("option");
     opcion.setAttribute("value", nMax);
     opcion.appendChild(document.createTextNode(nMin+"x"+nMax+"="+(nMin*nMax)));
-    select.appendChild(opcion);
+    document.querySelector("select").appendChild(opcion);
 }
 function anyadirElemento(contador) {
     let f=document.form;
     let nMin = numMin(f);
     let nMax = numMax(f)+contador;
-    let tipo = f.opciones.value;
-    switch (tipo) {
+    switch (f.opciones.value) {
         case "lista":
             anyadirLista(nMin, nMax);
             break;
@@ -179,11 +174,9 @@ function anyadirElemento(contador) {
 function cambiarElemento(contador) {
     let f=document.form;
     let nMin = numMin(f);
-    let nMax = numMax(f)+contador;
-    let contenido = document.getElementById("contenido").firstElementChild.nodeName;
-    console.log(contenido);
+    let nMax = numMax(f);
     document.getElementById("contenido").removeChild(document.getElementById("contenido").firstElementChild);
-    switch (contenido) {
+    switch (document.getElementById("contenido").firstElementChild.nodeName) {
         case "UL": /*La tabla está en formato Lista*/
             crearParrafo(nMin, nMax, contador);
             document.querySelector('input[value="parrafo"]').checked = true
@@ -206,10 +199,9 @@ function cambiarElemento(contador) {
 function reemplazarElemento(contador) {
     let f=document.form;
     let nMin = numMin(f);
-    let nMax = numMax(f)+contador;
-    let tipo = f.opciones.value;
+    let nMax = numMax(f);
     document.getElementById("contenido").removeChild(document.getElementById("contenido").firstElementChild);
-    switch (tipo) {
+    switch (f.opciones.value) {
         case "lista":
             crearLista(nMin, nMax, contador);
             break;
@@ -249,11 +241,10 @@ window.onload = function() {
     }
     document.querySelector('button[name="anyadir"]').setAttribute('hidden', "true");
     document.querySelector('button[name="anyadir"]').onclick = function() {
-        contador++;
-        anyadirElemento(contador);
+        (contadorCreacion(numMax(f))+numMax(f)<10) ? anyadirElemento(++contador) : alert("No se pueden sobrepasar los 10 elementos");
     }
     let radios = document.querySelectorAll('input[type="radio"]');
     for (let radiobutton of radios) radiobutton.onchange = function() {
-       if (document.querySelector("#contenido").hasChildNodes()) reemplazarElemento(contador);
+        if (document.querySelector("#contenido").hasChildNodes()) reemplazarElemento(contador);
     }
 }
