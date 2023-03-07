@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="Ejercicio Bootstrap 2.1">
+    <meta name="keywords" content="HTML, CSS, JavaScript, TypeScript, Angular, Bootstrap">
+    <meta name="author" content="Sandra Requena">
+    <title>Ejercicio Bootstrap 2.1</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/ejer2.1.css">
+</head>
+<body>
+    <h1>Offset y ordenación</h1>
+    <p>
+        En este ejercicio vamos a practicar con algunas características más de
+        Bootstrap: la posibilidad de añadir un offset (o espacio inicial a las
+        columnas), el cambio de orden de los elementos de una fila y la
+        visibilidad de las columnas según el tamaño del dispositivo.
+    </p>
+    <p>
+        Para ello nos crearemos una nueva página web partiendo de la plantilla
+        básica, le añadiremos un contendor de tipo container e iremos añadiendo
+        filas y columnas intentando imitar el diseño, colores y contenidos del
+        esquema de la siguiente figura:
+    </p>
+    <img src="images/ejer2.1.png" alt="Ejercicio 2.1" width="1000">
+    <p>
+        Tened en cuenta que:
+    </p>
+    <ul>
+        <li>
+            La segunda fila (que contiene 4 columnas con los números 1, 2,
+            3 y 4) es solamente una fila a la que se le han añadido offsets.
+            Para forzar el cambio de fila se puede añadir un elemento entre
+            la 2ª y la 3ª columna que solo sea visible cuando la pantalla
+            sea mediana o grande (md, lg, xl o xxl) y que aplique la
+            clase .w-100 de Bootstrap.
+        </li>
+        <li>
+            El orden de la tercera fila (con las letras a, b, c, d) se ha alterado
+            para las disposiciones de pantalla grandes (md, lg, xl y xxl)
+            usando las clases de bootstrap order-*.
+        </li>
+        <li>
+            En la 5ª fila naranja se ha aplicado un cambio de orden y un
+            offset para las pantallas grandes y medianas (md, lg, xl y xxl).
+            Además, cuando la pantalla sea de tipo xs se deberá de ocultar
+            una de sus columnas.
+        </li>
+        <li>
+            La fila azul claro en la que pone Desktop (para pantallas md, lg,
+            xl y xxl), Tablet (para sm) y Mobile (cuando la pantalla es xs) en
+            realidad son 3 filas distintas con clases para que solo se
+            muestren en dichos tamaños de pantalla.
+        </li>
+        <li>
+            La última fila (Footer) se deberá de ocultar solamente cuando
+            la pantalla sea del tipo xs.
+        </li>
+    </ul>
+    <br>
+    <h1>Resultado</h1>
+    <div class="container">
+        <div class="row verde">Header</div>
+        <div class="row">
+            <div class="col-6 col-sm-3 offset-md-3 azul">1</div>
+            <div class="col-6 col-sm-3 azul">2</div>
+            <div class="w-100 d-none d-md-block"></div>
+            <div class="col-6 col-sm-3 azul">3</div>
+            <div class="col-6 col-sm-3 offset-md-6 azul">4</div>
+        </div>
+        <div class="row">
+            <div class="col-6 col-sm-3 order-md-4 gris">a</div>
+            <div class="col-6 col-sm-3 order-md-3 gris">b</div>
+            <div class="col-6 col-sm-3 order-md-2 gris">c</div>
+            <div class="col-6 col-sm-3 order-md-1 gris">d</div>
+        </div>
+        <div class="row d-none d-md-block turquesa">Desktop</div>
+        <div class="row d-none d-sm-block d-md-none turquesa">Tablet</div>
+        <div class="row d-sm-none turquesa">Mobile</div>
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-3 order-md-2 naranja">:D</div>
+            <div class="col-6 offset-md-3 col-md-3 order-md-1 d-none d-sm-block naranja">:&#40;</div>
+        </div>
+        <div class="row d-none d-sm-block verde">Footer</div>
+    </div>
+    <br>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+</html>
