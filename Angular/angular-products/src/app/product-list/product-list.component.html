@@ -1,0 +1,23 @@
+<div class="card">
+  <div class="card-header bg-primary text-white"> {{title}} </div>
+  <div class="card-block">
+    <div class="table-responsive" *ngIf="products && products.length">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>{{cabeceras.producto}}</th>
+            <th>{{cabeceras.precio}}</th>
+            <th>{{cabeceras.disponible}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td>{{product.producto}}</td>
+            <td>{{product.precio}}</td>
+            <td>{{product.disponible}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
