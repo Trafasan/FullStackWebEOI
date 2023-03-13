@@ -8,10 +8,29 @@ import { IProduct } from '../interfaces/i-product'
 })
 export class ProductListComponent {
   title = 'Mi lista de productos';
+  showImage = true;
+  toggleImage() {
+    this.showImage = !this.showImage;
+  }
+  estilo1 = false;
+  estilo2 = false;
+  cambiarEstilo() {
+    const inputEstilo1:HTMLInputElement = <HTMLInputElement> document.querySelector("[name='estilos']");
+    if (inputEstilo1.checked) {
+      this.estilo1 = true;
+      this.estilo2 = false;
+    }
+    else {
+      this.estilo1 = false;
+      this.estilo2 = true;
+    }
+  }
+  filterSearch = "";
   cabeceras = {
     producto: 'Producto',
     precio: 'Precio',
     disponible: 'Disponible',
+    image: "Imagen"
   };
   products: IProduct[] = [
     {

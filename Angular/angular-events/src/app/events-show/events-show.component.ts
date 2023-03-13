@@ -8,16 +8,22 @@ import { IEvent } from '../interfaces/i-event'
 })
 export class EventsShowComponent {
   events:IEvent[] =[{
-    title: "Evento de prueba",
-    image: "",
-    date: new Date('2019-03-15').toLocaleDateString(),
-    description: "Nos lo pasaremos genial",
-    price: 23.95
+    title: "Evento 1",
+    image: "assets/evento1.jpg",
+    date: new Date('2016-10-03').toLocaleDateString(),
+    description: "Descripción del evento 1",
+    price: 99.95
   },{
-    title: "Evento de prueba 2",
-    image: "",
-    date: new Date('2019-03-21').toLocaleDateString(),
-    description: "Este es peor",
-    price: 15.5
+    title: "Evento 2",
+    image: "assets/evento2.jpg",
+    date: new Date('2021-10-03').toLocaleDateString(),
+    description: "Descripción del evento 2",
+    price: 70
+  },{
+    title: "Evento 3",
+    image: "assets/acdc.jpg",
+    date: new Date('2022-10-03').toLocaleDateString(),
+    description: "Descripción del evento 3",
+    price: 30
   }]
 }

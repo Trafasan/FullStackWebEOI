@@ -1,0 +1,15 @@
+td {
+  vertical-align: middle;
+}
+
+td:first-child img {
+  height: 75px;
+}
+
+.estilo1{
+  background-color: crimson;
+}
+
+.estilo2{
+  background-color: turquoise;
+}

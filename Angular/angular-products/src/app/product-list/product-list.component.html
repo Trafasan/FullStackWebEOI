@@ -1,23 +1,47 @@
 <div class="card">
   <div class="card-header bg-primary text-white"> {{title}} </div>
   <div class="card-block">
+    <form class="form">
+      <div class="form-group row">
+        <label class="col-form-label col-sm-2 text-sm-right" for="filterDesc">Filtro:</label>
+        <div class="col-sm-5">
+          <input type="text" [(ngModel)]="filterSearch" class="form-control" name="filterDesc" id="filterDesc" placeholder="Filter...">
+        </div>
+        <label class="col-form-label col-sm-5"> Filtrando por: {{filterSearch}}</label>
+      </div>
+    </form>
     <div class="table-responsive" *ngIf="products && products.length">
       <table class="table table-striped">
         <thead>
           <tr>
+            <th>
+              <button class="btn btn-sm" [ngClass]="{'btn-danger': showImage, 'btn-primary': !showImage}" (click)="toggleImage()">
+              {{showImage?'Ocultar':'Mostrar'}} imagen
+              </button>
+            </th>
             <th>{{cabeceras.producto}}</th>
             <th>{{cabeceras.precio}}</th>
             <th>{{cabeceras.disponible}}</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let product of products">
+          <tr *ngFor="let product of products | productFilter:filterSearch">
+            <td><img [src]="product.imageUrl" *ngIf="showImage" [alt]="product.producto" [title]="product.producto|uppercase"></td>
             <td>{{product.producto}}</td>
-            <td>{{product.precio}}</td>
-            <td>{{product.disponible}}</td>
+            <td  [ngClass]="{'estilo1': estilo1, 'estilo2': estilo2}">{{product.precio | currency:'EUR':'symbol'}}</td>
+            <td>{{product.disponible | date:'dd/MM/y'}}</td>
           </tr>
         </tbody>
       </table>
+      <div>
+        <label>Elige un estilo: &nbsp;</label>
+        <label>
+          <input type="radio" value="1" name="estilos" (change)="cambiarEstilo()"> Estilo 1 &nbsp;
+        </label>
+        <label>
+          <input type="radio" value="2" name="estilos" (change)="cambiarEstilo()"> Estilo 2
+        </label>
+      </div>
     </div>
   </div>
 </div>

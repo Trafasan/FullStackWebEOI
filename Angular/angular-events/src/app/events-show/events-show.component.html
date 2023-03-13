@@ -2,6 +2,7 @@
   <ng-template #elseBlock></ng-template>
   <div class="col-6 mt-4" *ngFor="let evento of events">
     <div class="card">
+      <img class="card-img-top" [src]="evento.image" [alt]="evento.title">
       <div class="card-body">
         <h4 class="card-title">{{evento.title}}</h4>
         <p class="card-text">{{evento.description}}</p>
