@@ -30,7 +30,8 @@ export class ProductListComponent {
     producto: 'Producto',
     precio: 'Precio',
     disponible: 'Disponible',
-    image: "Imagen"
+    image: "Imagen",
+    rating: "Puntuación"
   };
   products: IProduct[] = [
     {

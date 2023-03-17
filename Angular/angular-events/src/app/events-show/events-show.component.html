@@ -1,14 +1,56 @@
+<form class="mt-4" (ngSubmit)="addEvent()">
+  <div class="form-group">
+    <label for="name">Nombre</label>
+    <input type="text" class="form-control" name="title" [(ngModel)]="newEvent.title" placeholder="Enter name">
+  </div>
+  <div class="form-group">
+    <label for="date">Fecha</label>
+    <input type="date" class="form-control" name="date" [(ngModel)]="newEvent.date">
+  </div>
+  <div class="form-group">
+    <label for="description">Descripción</label>
+    <textarea class="form-control" name="description" [(ngModel)]="newEvent.description" rows="3"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="price">Precio</label>
+    <input type="number" class="form-control" name="price" [(ngModel)]="newEvent.price" min="0.00" max="10000.00" step="0.01" />
+  </div>
+  <div class="form-group">
+    <label for="image">Imagen</label>
+    <input type="file" class="form-control" name="image" #fileImage (change)="changeImage(fileImage)">
+  </div>
+  <img [src]="newEvent.image" alt="" class="img-thumbnail">
+  <button type="submit" class="btn btn-primary">Create</button>
+</form>
+<nav class="navbar navbar-light bg-light justify-content-between mt-3">
+  <ul class="nav nav-pills">
+    <li class="nav-item">
+      <a class="nav-link" href="#" (click)="orderDate()">Orden por fecha</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#" (click)="orderPrice()">Orden por precio</a>
+    </li>
+  </ul>
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="text" [(ngModel)]="search" name="search" placeholder="Search" aria-label="Search">
+  </form>
+</nav>
 <div class="row" *ngIf="events && events.length; else noEventos">
+  <select [(ngModel)]="desplegable" (change)="cambiarFondo()">
+    <option value="">Sin fondo</option>
+    <option value="rojo">Fondo rojo</option>
+    <option value="azul">Fondo azul</option>
+  </select>
   <ng-template #elseBlock></ng-template>
-  <div class="col-6 mt-4" *ngFor="let evento of events">
-    <div class="card">
-      <img class="card-img-top" [src]="evento.image" [alt]="evento.title">
+  <div class="col-6 mt-4" *ngFor="let evento of events | eventFilter:search">
+    <div class="card" [ngClass]="{'esFondoRojo':fondoRojo,'esFondoAzul':fondoAzul}">
+      <img class="card-img-top" [src]="evento.image" [alt]="evento.title" [style.height.px]="alturaImagen">
       <div class="card-body">
         <h4 class="card-title">{{evento.title}}</h4>
         <p class="card-text">{{evento.description}}</p>
       </div>
       <div class="card-footer text-muted">
-        {{evento.date}}
+        {{evento.date|date:"dd/MM/y"}}
         <span class="float-right">{{evento.price}}€</span>
       </div>
     </div>

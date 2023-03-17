@@ -10,38 +10,31 @@
         <label class="col-form-label col-sm-5"> Filtrando por: {{filterSearch}}</label>
       </div>
     </form>
-    <div class="table-responsive" *ngIf="products && products.length">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>
-              <button class="btn btn-sm" [ngClass]="{'btn-danger': showImage, 'btn-primary': !showImage}" (click)="toggleImage()">
-              {{showImage?'Ocultar':'Mostrar'}} imagen
-              </button>
-            </th>
-            <th>{{cabeceras.producto}}</th>
-            <th>{{cabeceras.precio}}</th>
-            <th>{{cabeceras.disponible}}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let product of products | productFilter:filterSearch">
-            <td><img [src]="product.imageUrl" *ngIf="showImage" [alt]="product.producto" [title]="product.producto|uppercase"></td>
-            <td>{{product.producto}}</td>
-            <td  [ngClass]="{'estilo1': estilo1, 'estilo2': estilo2}">{{product.precio | currency:'EUR':'symbol'}}</td>
-            <td>{{product.disponible | date:'dd/MM/y'}}</td>
-          </tr>
-        </tbody>
-      </table>
-      <div>
-        <label>Elige un estilo: &nbsp;</label>
-        <label>
-          <input type="radio" value="1" name="estilos" (change)="cambiarEstilo()"> Estilo 1 &nbsp;
-        </label>
-        <label>
-          <input type="radio" value="2" name="estilos" (change)="cambiarEstilo()"> Estilo 2
-        </label>
+    <div *ngIf="products && products.length">
+      <div class="row headers no-gutters">
+        <div class="col-2">
+          <button class="btn btn-sm" [ngClass]="{'btn-danger': showImage, 'btn-primary': !showImage}" (click)="toggleImage()">
+            {{showImage?'Ocultar':'Mostrar'}} imagen
+          </button>
+        </div>
+        <div class="col-4">{{cabeceras.producto}}</div>
+        <div class="col">{{cabeceras.precio}}</div>
+        <div class="col">{{cabeceras.disponible}}</div>
+        <div class="col">{{cabeceras.rating}}</div>
       </div>
+        <product-item class="row no-gutters"
+        [productoHijo]="product" [mostrarImagen]="showImage"
+        [estilo1]="estilo1" [estilo2]="estilo2"
+        *ngFor="let product of products | productFilter:filterSearch"></product-item>
+        <div>
+          <label>Elige un estilo: &nbsp;</label>
+          <label>
+            <input type="radio" value="1" name="estilos" (change)="cambiarEstilo()"> Estilo 1 &nbsp;
+          </label>
+          <label>
+            <input type="radio" value="2" name="estilos" (change)="cambiarEstilo()"> Estilo 2
+          </label>
+        </div>
     </div>
   </div>
 </div>
