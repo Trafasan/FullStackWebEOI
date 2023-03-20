@@ -11,4 +11,7 @@ export class ProductItemComponent {
   @Input() productoHijo!:IProduct;
   @Input() estilo1!:boolean;
   @Input() estilo2!:boolean;
+  changeRating(estrella:number){
+    this.productoHijo.rating=estrella;
+  }
 }

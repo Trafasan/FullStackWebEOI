@@ -8,7 +8,7 @@ export class ProductFilterPipe implements PipeTransform {
 
   transform(productos: IProduct[], filtro:string): IProduct[] {
     const filtroDef=filtro ? filtro.toLocaleLowerCase() : null;
-    return filtroDef ? productos.filter(elem=>elem.producto.toLocaleLowerCase().includes(filtroDef)):productos;
+    return filtroDef ? productos.filter(elem=>elem.desc.toLocaleLowerCase().includes(filtroDef)):productos;
   }
 
 }

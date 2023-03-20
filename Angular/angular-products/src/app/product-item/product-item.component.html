@@ -1,7 +1,8 @@
 <div class="col-2 pl-2">
-  <img [src]="productoHijo.imageUrl" *ngIf="mostrarImagen" [alt]="productoHijo.producto" [title]="productoHijo.producto|uppercase">
+  <img [src]="productoHijo.imageUrl" *ngIf="mostrarImagen" [alt]="productoHijo.desc" [title]="productoHijo.desc|uppercase">
 </div>
-<div class="col-4">{{productoHijo.producto}}</div>
-<div class="col" [ngClass]="{'estilo1': estilo1, 'estilo2': estilo2}">{{productoHijo.precio | currency:'EUR':'symbol'}}</div>
-<div class="col">{{productoHijo.disponible | date:'dd/MM/y'}}</div>
-<div class="col"><star-rating [rating]="productoHijo.rating"></star-rating></div>
+<div class="col-4">{{productoHijo.desc}}</div>
+<div class="col" [ngClass]="{'estilo1': estilo1, 'estilo2': estilo2}">{{productoHijo.price | currency:'EUR':'symbol'}}</div>
+<div class="col">{{productoHijo.avail | date:'dd/MM/y'}}</div>
+<div class="col"><star-rating [rating]="productoHijo.rating"
+  (ratingChanged)="changeRating($event)"></star-rating></div>
