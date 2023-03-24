@@ -8,8 +8,8 @@ export class EventFilterPipe implements PipeTransform {
 
   transform(eventos: IEvent[], filtro: string): IEvent[] {
     const filtroTit=filtro ? filtro.toLocaleLowerCase() : null;
-    return filtroTit ? eventos.filter(elem=>elem.title.toLocaleLowerCase().includes(filtroTit)||
-      elem.description.toLocaleLowerCase().includes(filtroTit)):eventos;
+    return filtroTit ? eventos.filter(elem=>elem.nombre.toLocaleLowerCase().includes(filtroTit)||
+      elem.descripcion.toLocaleLowerCase().includes(filtroTit)):eventos;
   }
 
 }

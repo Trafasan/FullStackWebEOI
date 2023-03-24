@@ -1,7 +1,11 @@
 <div class="col-2 pl-2">
   <img [src]="productoHijo.imageUrl" *ngIf="mostrarImagen" [alt]="productoHijo.desc" [title]="productoHijo.desc|uppercase">
 </div>
-<div class="col-4">{{productoHijo.desc}}</div>
+<div class="col-4">
+  <a [routerLink]="['/products', productoHijo.id]">
+    {{ productoHijo.desc }}
+  </a>
+</div>
 <div class="col" [ngClass]="{'estilo1': estilo1, 'estilo2': estilo2}">{{productoHijo.price | currency:'EUR':'symbol'}}</div>
 <div class="col">{{productoHijo.avail | date:'dd/MM/y'}}</div>
 <div class="col"><star-rating [rating]="productoHijo.rating"

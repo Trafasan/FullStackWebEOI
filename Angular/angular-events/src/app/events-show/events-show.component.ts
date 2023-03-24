@@ -44,17 +44,24 @@ export class EventsShowComponent implements OnInit/*, OnChanges, DoCheck, OnDest
   orderDate(){
     this.search = "";
     // this.events.sort((a, b) => (a.date > b.date) ? 1 : -1);
-    this.events.sort((a, b) => a.date.getTime() - b.date.getTime());
+    this.events.sort((a, b) => a.fecha.getTime() - b.fecha.getTime());
   }
   orderPrice(){
     this.search = "";
-    this.events.sort((a, b)=> a.price-b.price);
+    this.events.sort((a, b)=> a.precio-b.precio);
   }
 
   deleteEvent(evento:IEvent){
-    this.events=this.events.filter(e=>e!=evento);
+    this.servicio.deleteEvento(<number>evento.id).subscribe({
+      next:respu=>{this.events=this.events.filter(e=>e!=evento);console.log(respu)},
+      error:e=>console.log(e)
+    });
   }
+
   addEvent(newEvent:IEvent) {
-    this.events.push(newEvent);
+    this.servicio.addEvento(newEvent).subscribe({
+      next:respu=>{this.events.push(newEvent);console.log(respu)},
+      error:e=>console.log(e)
+    });
   }
 }

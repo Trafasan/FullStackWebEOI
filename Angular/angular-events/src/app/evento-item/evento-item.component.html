@@ -1,12 +1,12 @@
 <div class="card" [ngClass]="{'esFondoRojo':fondoRojo,'esFondoAzul':fondoAzul}">
-  <img class="card-img-top" [src]="eventoHijo.image" [alt]="eventoHijo.title" [style.height.px]="alturaImagen">
+  <img class="card-img-top" [src]="eventoHijo.image" [alt]="eventoHijo.nombre" [style.height.px]="alturaImagen">
   <div class="card-body">
-    <h4 class="card-title">{{eventoHijo.title}}</h4>
-    <p class="card-text">{{eventoHijo.description}}</p>
+    <h4 class="card-title">{{eventoHijo.nombre}}</h4>
+    <p class="card-text">{{eventoHijo.descripcion}}</p>
     <button class="btn btn-danger ml-3 float-right" (click)="deleteEvent()">Borrar evento</button>
   </div>
   <div class="card-footer text-muted">
-    {{eventoHijo.date|date:"dd/MM/y"}}
-    <span class="float-right">{{eventoHijo.price}}€</span>
+    {{eventoHijo.fecha|date:"dd/MM/y"}}
+    <span class="float-right">{{eventoHijo.precio}}€</span>
   </div>
 </div>

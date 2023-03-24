@@ -1,8 +1,8 @@
 export interface IEvent {
   id?:number;
-  title: string;
-  description: string;
-  date: Date;
-  price: number;
+  nombre: string;
+  descripcion: string;
+  precio: number;
+  fecha: Date;
   image: string;
 }

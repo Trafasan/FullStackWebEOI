@@ -7,11 +7,20 @@ import { IEvent } from '../interfaces/i-event';
   providedIn: 'root'
 })
 export class EventsService {
-  private productURL="http://curso.i234.me:8080/eventos";
+  private productURL="eventos";
   constructor(private http: HttpClient) { }
 
   getEventos():Observable<IEvent[]> {
-    return this.http.get<{eventos: IEvent[], ok:boolean}>(this.productURL)
-    .pipe(map(response=>response.eventos));
+    return this.http.get<IEvent[]>(this.productURL);
+  }
+
+  addEvento(newEvent:IEvent):Observable<IEvent> {
+    return this.http.post<{evento:IEvent, mensaje:string, error?:string}>(this.productURL, newEvent)
+    .pipe(map(response => response.evento));
+  }
+
+  deleteEvento(idEvent:number):Observable<boolean> {
+    return this.http.delete<{mensaje:string, error?:string}>(this.productURL+'/'+idEvent)
+    .pipe(map(response => response.error!=undefined));
   }
 }

@@ -14,11 +14,11 @@ export class EventAddComponent implements OnInit{
   }
   inicializarEvento() {
     this.newEvent = {
-      title: '',
-      description: '',
-      image: '',
-      price: 0,
-      date: new Date('')
+      nombre: '',
+      descripcion: '',
+      precio: 0,
+      fecha: new Date(''),
+      image: ''
     };
   }
   changeImage(fileInput:HTMLInputElement) {
@@ -28,7 +28,7 @@ export class EventAddComponent implements OnInit{
     reader.addEventListener('loadend', () => this.newEvent.image = reader.result as string);
   }
   addEvent() {
-    this.newEvent.date = new Date(this.newEvent.date);
+    this.newEvent.fecha = new Date(this.newEvent.fecha);
     this.addEvento.emit(this.newEvent);
     this.inicializarEvento();
   }
