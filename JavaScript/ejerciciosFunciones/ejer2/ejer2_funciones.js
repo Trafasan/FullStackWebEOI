@@ -44,7 +44,8 @@ function pedirValidarTipo(texto) {
     let tipo;
     do {
         tipo = prompt(texto).toUpperCase();
-        if (tipo != "LISTA" && tipo != "PARRAFO" && tipo != "TABLA" && tipo != "DESPLEGABLE" && tipo != "SALIR") alert ("No se ha reconocido el modo introducido.");
+        if (tipo != "LISTA" && tipo != "PARRAFO" && tipo != "TABLA" && tipo != "DESPLEGABLE" && tipo != "SALIR")
+            alert ("No se ha reconocido el modo introducido.");
     }  while (tipo != "LISTA" && tipo != "PARRAFO" && tipo != "TABLA" && tipo != "DESPLEGABLE" && tipo != "SALIR");
     return tipo;
 }
@@ -69,4 +70,4 @@ document.head.innerHTML += "<link rel=\"stylesheet\" href=\"ejer2_funciones.css\
 do{
     tipo = pedirValidarTipo("Introduzca el modo de visualización (LISTA, PARRAFO, TABLA, DESPLEGABLE, SALIR): ");
     elegirImpresion(nMin, nMax, tipo);
-} while (tipo != "SALIR")
+} while (tipo != "LISTA" && tipo != "PARRAFO" && tipo != "TABLA" && tipo != "DESPLEGABLE" && tipo != "SALIR")

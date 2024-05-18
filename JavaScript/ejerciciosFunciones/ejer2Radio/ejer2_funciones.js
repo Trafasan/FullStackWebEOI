@@ -175,8 +175,9 @@ function cambiarElemento(contador) {
     let f=document.form;
     let nMin = numMin(f);
     let nMax = numMax(f);
-    document.getElementById("contenido").removeChild(document.getElementById("contenido").firstElementChild);
-    switch (document.getElementById("contenido").firstElementChild.nodeName) {
+    const tipo_elemento = document.getElementById("contenido").firstElementChild
+    document.getElementById("contenido").removeChild(tipo_elemento);
+    switch (tipo_elemento.nodeName) {
         case "UL": /*La tabla está en formato Lista*/
             crearParrafo(nMin, nMax, contador);
             document.querySelector('input[value="parrafo"]').checked = true
@@ -224,11 +225,21 @@ function validarNumero(input) {
     else input.setCustomValidity("");
 }
 
+function validarOpciones() {
+    const input = document.querySelector('[value="lista"]');
+    input === null || input === void 0 ? void 0 : input.setCustomValidity(this.value == "" ? "Debe elegir una opción" : "");
+}
+
 window.onload = function() {
     let contador = 0;
     let f=document.form;
     f.n1.setCustomValidity("Error\nEl campo no puede estar vacío.");
     f.n2.setCustomValidity("Error\nEl campo no puede estar vacío.");
+    const opciones = f.elements.namedItem("opciones");
+    document.querySelector('[value="lista"]').setCustomValidity(opciones.value == "" ? "Debe elegir una opción" : "");
+    for (let opcion of opciones)
+        opcion.onclick = validarOpciones;
+    
     f.n1.oninput=function() {
         validarNumero(this);
     }
